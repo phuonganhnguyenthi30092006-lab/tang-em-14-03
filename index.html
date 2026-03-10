@@ -2,13 +2,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Matrix Effect</title>
+<title>Matrix Birthday</title>
 
 <style>
 body{
 margin:0;
-overflow:hidden;
 background:black;
+overflow:hidden;
 font-family:Arial;
 }
 
@@ -16,30 +16,42 @@ canvas{
 display:block;
 }
 
-.centerText{
+.text{
 position:absolute;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-font-size:90px;
-font-weight:bold;
+text-align:center;
 color:white;
-text-shadow:
-0 0 10px #00ff00,
-0 0 20px #00ff00,
-0 0 40px #00ff00;
-letter-spacing:5px;
+text-shadow:0 0 15px #00ff00;
+}
+
+.text h1{
+font-size:90px;
+margin:0;
+}
+
+.text h2{
+font-size:70px;
+margin:0;
+}
+
+.text h3{
+font-size:50px;
+margin:10px 0 0 0;
 }
 </style>
-
 </head>
 
 <body>
 
 <canvas id="matrix"></canvas>
 
-<div class="centerText">
-27.11.2008
+<div class="text">
+<h1>HAPPY</h1>
+<h2>BIRTHDAY</h2>
+<h3>TRẦN ĐỨC VIỆT</h3>
+<h3>27.11.2008</h3>
 </div>
 
 <script>
@@ -50,22 +62,23 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const letters = "アァカサタナハマヤャラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const letters = "01";
 const fontSize = 18;
 const columns = canvas.width / fontSize;
 
 const drops = [];
 
-for(let x = 0; x < columns; x++)
-drops[x] = Math.random()*canvas.height;
+for(let i=0;i<columns;i++){
+drops[i]=Math.random()*canvas.height;
+}
 
 function draw(){
 
-ctx.fillStyle = "rgba(0,0,0,0.08)";
+ctx.fillStyle="rgba(0,0,0,0.05)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
-ctx.fillStyle = "#00ff41";
-ctx.font = fontSize + "px monospace";
+ctx.fillStyle="#00ff00";
+ctx.font=fontSize+"px monospace";
 
 for(let i=0;i<drops.length;i++){
 
@@ -73,11 +86,11 @@ const text = letters[Math.floor(Math.random()*letters.length)];
 
 ctx.fillText(text,i*fontSize,drops[i]);
 
-if(drops[i] > canvas.height && Math.random() > 0.975){
-drops[i] = 0;
+if(drops[i] > canvas.height && Math.random()>0.975){
+drops[i]=0;
 }
 
-drops[i] += fontSize;
+drops[i]+=fontSize;
 
 }
 
